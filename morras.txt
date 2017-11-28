@@ -1,0 +1,23 @@
+# Country
+Rusia
+Mexico
+Australia
+
+# Morra
+20, Angelina Danilova, Rusia
+19, Anastasia Fomicheva, Rusia
+18, Julia, Rusia
+16, Lisa, Rusia
+16, Aurora, Mexico
+23, Carreño, Mexico
+15, Mikaela Binns-Rorke, Australia
+
+# Instagram
+angelinadanilova, 569000, 920, 2400
+anasta_fo_, 4379, 290, 703
+jou.s_, 493, 940, 4
+nedonebes_, 15400, 200, 61
+wormdrool, 300, 166, 473
+carrenopol, 2986, 442, 286
+mikibinnsrorke, 26800, 98, 299
+
