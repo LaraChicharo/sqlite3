@@ -15,7 +15,9 @@ CREATE TABLE instagram(
 
 -- create one to one relation morra_instagram --
 CREATE TABLE morra_instagram(
-	id INTEGER PRIMARY KEY ASC, morra_id INTEGER, instagram_id INTEGER,
+	id INTEGER PRIMARY KEY ASC,
+	morra_id INTEGER UNIQUE,
+	instagram_id INTEGER UNIQUE,
 	FOREIGN KEY(morra_id) REFERENCES morra(id),
 	FOREIGN KEY(instagram_id) REFERENCES instagram(id));
 
@@ -54,3 +56,19 @@ INSERT INTO instagram(username, nfollowers, nfollowing, nposts)
 VALUES ("carrenopol", 2986, 442, 286);
 INSERT INTO instagram(username, nfollowers, nfollowing, nposts)
 VALUES ("mikibinnsrorke", 26800, 98, 299);
+
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (1, 1);
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (2, 2);
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (3, 3);
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (4, 4);
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (5, 5);
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (6, 6);
+INSERT INTO morra_instagram(morra_id, instagram_id)
+VALUES (7, 7);
+
