@@ -21,6 +21,8 @@ int query_morras_by_country_callback(
 	void *data, int argc, char **argv, char **azColName);
 void query_russian_instagram(void);
 void print_menu(void);
+void eliminate_repeated_file();
+int file_exist ();
 
 /**
  * Reads a .sql file, loads its instructions to a database
@@ -42,11 +44,9 @@ int main(int argc, char* argv[]){
 		printf("The extension of the file isn't valid\n");
 		exit(1);
 	}	
-
+	eliminate_repeated_file(argv[1]);
 	int rc = sqlite3_open(DBNAME, &ppDb);
-
 	write_db(argv[1], rc);
-
 	char *errmsg;
 
 	handle_rc(rc, &ppDb);
@@ -91,6 +91,10 @@ void write_db (char* file, int rc){
       	fprintf(stderr, "Opened database successfully\n");
 
     //here we read the file  
+    if(file_exist(file) == 1){
+    	printf("File provied doesn't exist\n");
+    	exit(1);
+    }
 	for (i = getc(read); i != EOF; i = getc(read))
 		sql[j++] = i;
 
@@ -241,4 +245,27 @@ void print_menu(void) {
 	puts("Press: q to quit");
 	puts("a to show the 5 most followed instagram accounts");
 	puts("r to show russian insagram accounts.");
+}
+
+/**
+ * Eliminates the file, if it exists
+ */
+void eliminate_repeated_file(){
+	if(file_exist(DBNAME) == 0)
+		remove(DBNAME);
+}
+
+
+/**
+ * Veryfies if the database already exists
+ * @return 0 if the file exists
+ *		   1 otherwise
+ */
+int file_exist (char* filename){
+	FILE* file;
+    if((file = fopen(filename,"r"))!=NULL){
+            fclose(file);
+            return 0;
+        }
+    return 1;
 }
