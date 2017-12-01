@@ -51,6 +51,8 @@ int main(int argc, char* argv[]){
 		printf("The extension of the file isn't valid\n");
 		exit(1);
 	}	
+	//It's necessary to remove an existing database with the same name.
+	//Otherwise the program won't work
 	eliminate_repeated_file(argv[1]);
 	int rc = sqlite3_open(DBNAME, &ppDb);
 	write_db(argv[1], rc);

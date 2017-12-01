@@ -1,0 +1,240 @@
+\hypertarget{interpreter_8c}{}\section{interpreter.\+c File Reference}
+\label{interpreter_8c}\index{interpreter.\+c@{interpreter.\+c}}
+
+
+little sqlite3 example  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$sqlite3.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries E\+X\+T\+E\+N\+T\+I\+ON}~\char`\"{}sql\char`\"{}\hypertarget{interpreter_8c_a20819239d1b1b5f36b03dc166e6f2286}{}\label{interpreter_8c_a20819239d1b1b5f36b03dc166e6f2286}
+
+\item 
+\#define {\bfseries D\+B\+N\+A\+ME}~\char`\"{}Data\+Base.\+db\char`\"{}\hypertarget{interpreter_8c_a7485233945887459d65005a7669104a6}{}\label{interpreter_8c_a7485233945887459d65005a7669104a6}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interpreter_8c_a18718cbe24998a79000e759dfb6d4fe1}{write\+\_\+db} (char $\ast$file, int rc)
+\item 
+int \hyperlink{interpreter_8c_a7627ba29499008a21dbda5281836e1ef}{print\+\_\+query\+\_\+callback} (void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)
+\item 
+void \hyperlink{interpreter_8c_a0a28b4d0a9e4e5cef7d29151175aff19}{handle\+\_\+rc} (int rc, sqlite3 $\ast$$\ast$pp\+Db)
+\item 
+int \hyperlink{interpreter_8c_af96d8b8e0eedaad28d8b0e18751bf32d}{query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback} (void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)
+\item 
+int \hyperlink{interpreter_8c_a3de65a9ca57fd791eb91bf51ef388944}{query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback} (void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)
+\item 
+int \hyperlink{interpreter_8c_a60d44fd83af537be4abe698d7722b1ad}{query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback} (void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)
+\item 
+void \hyperlink{interpreter_8c_a6e10e4e43520468d831d7b66e6e6a8b9}{query\+\_\+russian\+\_\+instagram} (void)
+\item 
+void \hyperlink{interpreter_8c_a3d5c083535dec79d2af86dae315b6229}{print\+\_\+menu} (void)
+\item 
+void \hyperlink{interpreter_8c_aedf2151dc7ae938f55baef8a09907fb5}{eliminate\+\_\+repeated\+\_\+file} ()
+\item 
+int {\bfseries file\+\_\+exist} ()\hypertarget{interpreter_8c_a793635deea896d843ad5ad995b3888b2}{}\label{interpreter_8c_a793635deea896d843ad5ad995b3888b2}
+
+\item 
+int \hyperlink{interpreter_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{interpreter_8c_a928b1da945af8413e422d1749058d33a}{file\+\_\+exist} (char $\ast$filename)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sqlite3 $\ast$ {\bfseries pp\+Db}\hypertarget{interpreter_8c_a03022c4315ae2dfdbc866c47fa21ae88}{}\label{interpreter_8c_a03022c4315ae2dfdbc866c47fa21ae88}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+little sqlite3 example 
+
+\begin{DoxyAuthor}{Author}
+Cesar Alejandro Lara Limon. \href{mailto:larachicharo@protonmail.com}{\tt larachicharo@protonmail.\+com} 
+
+Alejandro Tonatiuh Valderrama Silva \href{mailto:valdefrog@gmail.com}{\tt valdefrog@gmail.\+com} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{interpreter.\+c@{interpreter.\+c}!eliminate\+\_\+repeated\+\_\+file@{eliminate\+\_\+repeated\+\_\+file}}
+\index{eliminate\+\_\+repeated\+\_\+file@{eliminate\+\_\+repeated\+\_\+file}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{eliminate\+\_\+repeated\+\_\+file()}{eliminate_repeated_file()}}]{\setlength{\rightskip}{0pt plus 5cm}void eliminate\+\_\+repeated\+\_\+file (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_aedf2151dc7ae938f55baef8a09907fb5}{}\label{interpreter_8c_aedf2151dc7ae938f55baef8a09907fb5}
+Eliminates the file, if it exists \index{interpreter.\+c@{interpreter.\+c}!file\+\_\+exist@{file\+\_\+exist}}
+\index{file\+\_\+exist@{file\+\_\+exist}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+exist(char $\ast$filename)}{file_exist(char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}int file\+\_\+exist (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a928b1da945af8413e422d1749058d33a}{}\label{interpreter_8c_a928b1da945af8413e422d1749058d33a}
+Veryfies if the database already exists \begin{DoxyReturn}{Returns}
+0 if the file exists 1 otherwise 
+\end{DoxyReturn}
+\index{interpreter.\+c@{interpreter.\+c}!handle\+\_\+rc@{handle\+\_\+rc}}
+\index{handle\+\_\+rc@{handle\+\_\+rc}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{handle\+\_\+rc(int rc, sqlite3 $\ast$$\ast$pp\+Db)}{handle_rc(int rc, sqlite3 **ppDb)}}]{\setlength{\rightskip}{0pt plus 5cm}void handle\+\_\+rc (
+\begin{DoxyParamCaption}
+\item[{int}]{rc, }
+\item[{sqlite3 $\ast$$\ast$}]{pp\+Db}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a0a28b4d0a9e4e5cef7d29151175aff19}{}\label{interpreter_8c_a0a28b4d0a9e4e5cef7d29151175aff19}
+Handles errors reported/produced by sqlite3 
+\begin{DoxyParams}{Parameters}
+{\em rc} & status code \\
+\hline
+{\em pp\+Db} & pointer to pointer of database instance \\
+\hline
+\end{DoxyParams}
+\index{interpreter.\+c@{interpreter.\+c}!main@{main}}
+\index{main@{main}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$argv[])}{main(int argc, char *argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a0ddf1224851353fc92bfbff6f499fa97}{}\label{interpreter_8c_a0ddf1224851353fc92bfbff6f499fa97}
+Reads a .sql file, loads its instructions to a database and then provides a method to explore the contents of the newly created database. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & the number of arguments received \\
+\hline
+{\em argv} & the arguments received. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+, returns 0 if everything went successfull. 1 otherwise 
+\end{DoxyReturn}
+\index{interpreter.\+c@{interpreter.\+c}!print\+\_\+menu@{print\+\_\+menu}}
+\index{print\+\_\+menu@{print\+\_\+menu}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+menu(void)}{print_menu(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+menu (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a3d5c083535dec79d2af86dae315b6229}{}\label{interpreter_8c_a3d5c083535dec79d2af86dae315b6229}
+Creates a menu, with to options, for the user. With the option \textquotesingle{}a\textquotesingle{}, the user will be able to see the 5 most followed instagrams and with \textquotesingle{}r\textquotesingle{} the russian instagram accounts. \index{interpreter.\+c@{interpreter.\+c}!print\+\_\+query\+\_\+callback@{print\+\_\+query\+\_\+callback}}
+\index{print\+\_\+query\+\_\+callback@{print\+\_\+query\+\_\+callback}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+query\+\_\+callback(void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)}{print_query_callback(void *data, int argc, char **argv, char **azColName)}}]{\setlength{\rightskip}{0pt plus 5cm}int print\+\_\+query\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{char $\ast$$\ast$}]{az\+Col\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a7627ba29499008a21dbda5281836e1ef}{}\label{interpreter_8c_a7627ba29499008a21dbda5281836e1ef}
+Callback function invoked by sqlite3. Prints a set of data, the result of the query. 
+\begin{DoxyParams}{Parameters}
+{\em data} & argument sent by user. \\
+\hline
+{\em argc} & the number of arguments in the param argv \\
+\hline
+{\em argv} & array of results of query \\
+\hline
+{\em argv} & array of names of columns \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code. 
+\end{DoxyReturn}
+\index{interpreter.\+c@{interpreter.\+c}!query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback@{query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback}}
+\index{query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback@{query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback(void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)}{query_instagram_by_id_callback(void *data, int argc, char **argv, char **azColName)}}]{\setlength{\rightskip}{0pt plus 5cm}int query\+\_\+instagram\+\_\+by\+\_\+id\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{char $\ast$$\ast$}]{az\+Col\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_af96d8b8e0eedaad28d8b0e18751bf32d}{}\label{interpreter_8c_af96d8b8e0eedaad28d8b0e18751bf32d}
+Callback function invoked by sqlite3. Fetches instagrams by its id. 
+\begin{DoxyParams}{Parameters}
+{\em data} & argument sent by user. \\
+\hline
+{\em argc} & the number of arguments in the param argv \\
+\hline
+{\em argv} & array of results of query \\
+\hline
+{\em argv} & array of names of columns \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code. 
+\end{DoxyReturn}
+\index{interpreter.\+c@{interpreter.\+c}!query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback@{query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback}}
+\index{query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback@{query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback(void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)}{query_instagramid_by_morraid_callback(void *data, int argc, char **argv, char **azColName)}}]{\setlength{\rightskip}{0pt plus 5cm}int query\+\_\+instagramid\+\_\+by\+\_\+morraid\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{char $\ast$$\ast$}]{az\+Col\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a3de65a9ca57fd791eb91bf51ef388944}{}\label{interpreter_8c_a3de65a9ca57fd791eb91bf51ef388944}
+Callback function invoked by sqlite3. Fetches id\textquotesingle{}s of instagrams that belong to certain morras. The specific morras are specified in argv 
+\begin{DoxyParams}{Parameters}
+{\em data} & argument sent by user. \\
+\hline
+{\em argc} & the number of arguments in the param argv \\
+\hline
+{\em argv} & array of results of query \\
+\hline
+{\em argv} & array of names of columns \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code. 
+\end{DoxyReturn}
+\index{interpreter.\+c@{interpreter.\+c}!query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback@{query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback}}
+\index{query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback@{query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback(void $\ast$data, int argc, char $\ast$$\ast$argv, char $\ast$$\ast$az\+Col\+Name)}{query_morras_by_country_callback(void *data, int argc, char **argv, char **azColName)}}]{\setlength{\rightskip}{0pt plus 5cm}int query\+\_\+morras\+\_\+by\+\_\+country\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{char $\ast$$\ast$}]{az\+Col\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a60d44fd83af537be4abe698d7722b1ad}{}\label{interpreter_8c_a60d44fd83af537be4abe698d7722b1ad}
+Callback function. Receives an id of a country and gets all the morras who live there. 
+\begin{DoxyParams}{Parameters}
+{\em data} & argument sent by user. \\
+\hline
+{\em argc} & the number of arguments in the param argv \\
+\hline
+{\em argv} & array of results of query \\
+\hline
+{\em argv} & array of names of columns \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code. 
+\end{DoxyReturn}
+\index{interpreter.\+c@{interpreter.\+c}!query\+\_\+russian\+\_\+instagram@{query\+\_\+russian\+\_\+instagram}}
+\index{query\+\_\+russian\+\_\+instagram@{query\+\_\+russian\+\_\+instagram}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{query\+\_\+russian\+\_\+instagram(void)}{query_russian_instagram(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void query\+\_\+russian\+\_\+instagram (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a6e10e4e43520468d831d7b66e6e6a8b9}{}\label{interpreter_8c_a6e10e4e43520468d831d7b66e6e6a8b9}
+Queries all the instagrams that belong to Russian girls. \index{interpreter.\+c@{interpreter.\+c}!write\+\_\+db@{write\+\_\+db}}
+\index{write\+\_\+db@{write\+\_\+db}!interpreter.\+c@{interpreter.\+c}}
+\subsubsection[{\texorpdfstring{write\+\_\+db(char $\ast$file, int rc)}{write_db(char *file, int rc)}}]{\setlength{\rightskip}{0pt plus 5cm}void write\+\_\+db (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file, }
+\item[{int}]{rc}
+\end{DoxyParamCaption}
+)}\hypertarget{interpreter_8c_a18718cbe24998a79000e759dfb6d4fe1}{}\label{interpreter_8c_a18718cbe24998a79000e759dfb6d4fe1}
+This method writes the informatiion into de database. 
+\begin{DoxyParams}{Parameters}
+{\em file,the} & name of the file with the information of the databse \\
+\hline
+\end{DoxyParams}
