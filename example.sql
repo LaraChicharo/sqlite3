@@ -1,7 +1,3 @@
---FOREIGN KEYS USE --
-PRAGMA foreign_keys = ON;
-
--- CREATING TABLES --
 CREATE TABLE country(
 	id INTEGER PRIMARY KEY ASC, name TEXT);
 
@@ -13,7 +9,7 @@ CREATE TABLE instagram(
 	id INTEGER PRIMARY KEY, username TEXT,
 	nfollowers INTEGER, nfollowing INTEGER, nposts INTEGER);
 
--- create one to one relation morra_instagram --
+
 CREATE TABLE morra_instagram(
 	id INTEGER PRIMARY KEY ASC,
 	morra_id INTEGER UNIQUE,
@@ -21,7 +17,6 @@ CREATE TABLE morra_instagram(
 	FOREIGN KEY(morra_id) REFERENCES morra(id),
 	FOREIGN KEY(instagram_id) REFERENCES instagram(id));
 
--- INSERTING VALUES --
 INSERT INTO country(name) VALUES ("Mexico");
 INSERT INTO country(name) VALUES ("Rusia");
 INSERT INTO country(name) VALUES ("Australia");
@@ -77,7 +72,6 @@ VALUES (6, 6);
 INSERT INTO morra_instagram(morra_id, instagram_id)
 VALUES (7, 7);
 
--- INSERTING MOCK DATA --
 insert into morra (age, name, country_id) values (28, 'Leah', 1);
 insert into morra (age, name, country_id) values (17, 'Isabella', 7);
 insert into morra (age, name, country_id) values (24, 'Appolonia', 2);

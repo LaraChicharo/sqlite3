@@ -4,7 +4,6 @@
 
 #define DBNAME "ex.sqlt"
 
-
 sqlite3 *ppDb;
 
 
