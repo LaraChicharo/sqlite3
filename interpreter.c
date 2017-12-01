@@ -5,12 +5,11 @@
 
 //the extention we accept
 #define EXTENTION "sql"
-#define DBNAME "ex.sqlt"
+#define DBNAME "DataBase.db"
 
 sqlite3 *ppDb;
 
-void verify_arguments(int argc, char* argv);
-void write_db (char* file);
+void write_db (char* file, int rc);
 int print_query_callback(
 	void *data, int argc, char **argv, char **azColName);
 void handle_rc(int rc, sqlite3 **ppDb);
@@ -24,22 +23,33 @@ void query_russian_instagram(void);
 void print_menu(void);
 
 /**
- * This method .
+ * This method generates the database from the file that receives.
+ * Also, it display a menu with two options.
+ * @param argc, the numbers of arguments
+ * @param argv,	the value of the arguments
+ * @return, returns 0 if everything went successfull.
+ *					1 otherwise
  */
 int main(int argc, char* argv[]){
-	verify_arguments(argc, argv[1]);
-	write_db(argv[1]);
-	
-	int rc;
+	//Because of a good practice, we check the arguments
+	if(argc == 1){
+		printf("There is not a file as an argument\n");
+		exit(1);
+	}
+	char *ext = strrchr(argv[1], '.');
+	if(strcmp(ext+1, EXTENTION) != 0){
+		printf("The extension of the file isn't valid\n");
+		exit(1);
+	}	
+
+	int rc = sqlite3_open(DBNAME, &ppDb);
+
+	write_db(argv[1], rc);
+
 	char *errmsg;
-	
-	rc = sqlite3_open(
-		DBNAME,
-		&ppDb);
 
 	handle_rc(rc, &ppDb);
-	
-	
+
 	char c;
 	char *q;
 	print_menu();
@@ -55,32 +65,16 @@ int main(int argc, char* argv[]){
 		
 		print_menu();
 	}
-
 	sqlite3_close(ppDb);
+
 	return 0;
 }
 
 /**
- * This method ensures that the arguments are correct.
- */
-void verify_arguments(int argc, char* argv){
-	if(argc == 0){
-		printf("There is not a file as an argument\n");
-		exit(EXIT_FAILURE);
-	}
-	char *ext = strrchr(argv, '.');
-	if(strcmp(ext+1, EXTENTION) != 0){
-		printf("The extension of the file isn't valid\n");
-		exit(EXIT_FAILURE);
-	}
-}   	
-
-/**
  * This method writes the informatiion into de database.
+ * @param file, the name of the file with the information of the databse
  */
-void write_db (char* file){
-	sqlite3 *db;
-	int rc = sqlite3_open("DataBase.db", &db);
+void write_db (char* file, int rc){
 	int i, j;
 	char *err_msg = 0;
 	char block[1024];
@@ -88,29 +82,28 @@ void write_db (char* file){
 	FILE *read = fopen(file, "r");
 
 	if(rc){
-    	fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-    	exit(EXIT_FAILURE);
+    	fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(ppDb));
+    	//finish in case of an error
+    	exit(1);
    	}
    	else
       	fprintf(stderr, "Opened database successfully\n");
 
     //here we read the file  
-	for (i = getc(read); i != EOF; i = getc(read)){
+	for (i = getc(read); i != EOF; i = getc(read))
 		sql[j++] = i;
-	}    
 
 	//adding data to database
-	rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
+	rc = sqlite3_exec(ppDb, sql, 0, 0, &err_msg);
 
 	if (rc != SQLITE_OK){
         fprintf(stderr, "SQLITE error: %s\n", err_msg);
         
         sqlite3_free(err_msg);        
-        sqlite3_close(db);
-        
-        exit(EXIT_FAILURE);
-    } 
-    sqlite3_close(db);
+        sqlite3_close(ppDb);
+       	//finish in case of an error
+        exit(1);
+    }
 }
 
 int print_query_callback(
@@ -149,9 +142,6 @@ int query_instagram_by_id_callback(
 
 }
 
-/**
- * This method ensures that the arguments are correct.
- */
 int query_instagramid_by_morraid_callback(
 	void *data, int argc, char **argv, char **azColName) {
 
