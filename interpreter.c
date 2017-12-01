@@ -1,3 +1,10 @@
+/**
+ ** @file interpreter.c
+ ** @author Cesar Alejandro Lara Limon. larachicharo@protonmail.com
+ ** @author Alejandro Tonatiuh Valderrama Silva valdefrog@gmail.com
+ ** @brief little sqlite3 example
+ **
+ **/
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
