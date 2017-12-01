@@ -24,7 +24,11 @@ void query_russian_instagram(void);
 void print_menu(void);
 
 /**
- * This method .
+ * Reads a .sql file, loads its instructions to a database
+ * and then provides a method to explore the contents of 
+ * the newly created database.
+ * @param argc the number of arguments received
+ * @param argv the arguments received.
  */
 int main(int argc, char* argv[]){
 	verify_arguments(argc, argv[1]);
@@ -113,6 +117,15 @@ void write_db (char* file){
     sqlite3_close(db);
 }
 
+/**
+ * Callback function invoked by sqlite3.
+ * Prints a set of data, the result of the query.
+ * @param data argument sent by user.
+ * @param argc the number of arguments in the param argv
+ * @param argv array of results of query
+ * @param argv array of names of columns
+ * @returns status code.
+ */
 int print_query_callback(
 	void *data, int argc, char **argv, char **azColName) {
 	
@@ -124,6 +137,11 @@ int print_query_callback(
 	return 0;
 }
 
+/**
+ * Handles errors reported/produced by sqlite3
+ * @param rc status code
+ * @param ppDb pointer to pointer of database instance
+ */
 void handle_rc(int rc, sqlite3 **ppDb) {
 	if (rc != SQLITE_OK) {
 		fprintf(stderr, "%s\n",sqlite3_errmsg(*ppDb));
@@ -132,6 +150,15 @@ void handle_rc(int rc, sqlite3 **ppDb) {
 	}
 }
 
+/**
+ * Callback function invoked by sqlite3.
+ * Fetches instagrams by its id.
+ * @param data argument sent by user.
+ * @param argc the number of arguments in the param argv
+ * @param argv array of results of query
+ * @param argv array of names of columns
+ * @returns status code.
+ */
 int query_instagram_by_id_callback(
 	void *data, int argc, char **argv, char **azColName) {
 	if (argc < 1)
@@ -150,7 +177,14 @@ int query_instagram_by_id_callback(
 }
 
 /**
- * This method ensures that the arguments are correct.
+ * Callback function invoked by sqlite3. 
+ * Fetches id's of instagrams that belong to certain morras.
+ * The specific morras are specified in argv
+ * @param data argument sent by user.
+ * @param argc the number of arguments in the param argv
+ * @param argv array of results of query
+ * @param argv array of names of columns
+ * @returns status code.
  */
 int query_instagramid_by_morraid_callback(
 	void *data, int argc, char **argv, char **azColName) {
@@ -169,6 +203,15 @@ int query_instagramid_by_morraid_callback(
 	return 0;
 }
 
+/**
+ * Callback function. Receives an id of a country and 
+ * gets all the morras who live there.
+ * @param data argument sent by user.
+ * @param argc the number of arguments in the param argv
+ * @param argv array of results of query
+ * @param argv array of names of columns
+ * @returns status code.
+ */
 int query_morras_by_country_callback(
 	void *data, int argc, char **argv, char **azColName) {
 	
@@ -186,6 +229,9 @@ int query_morras_by_country_callback(
 	return 0;
 } 
 
+/**
+ * Queries all the instagrams that belong to Russian girls.
+ */
 void query_russian_instagram(void) {
 	char *errmsg;
 	char *q;
